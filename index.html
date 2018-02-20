@@ -1,56 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
- <head>
- <title>Kyle and Morgan</title>
- <meta charset="utf-8">
- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
- <link rel="stylesheet" href="styles.css">
- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
- <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
- </head>
- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="index.html">Kyle and Morgan's Honeymoon</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">Overview <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="travel.html">Travel</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Itinerary
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="seychelles.html">Seychelles</a>
-          <a class="dropdown-item" href="dulini.html">Dulini River Lodge</a>
-          <a class="dropdown-item" href="southafricawine.html">South Africa Wine Country</a>
-          <a class="dropdown-item" href="capetown.html">Cape Town</a>
-          <div class="dropdown-divider"></div>
-        </div>
-
+<html>
+<head>
+  <title>Weather</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkJMD1_etDjCXpjESOcixlKT1_U0QfYh4" async defer></script>
+  <script src="helpers.js"></script>
+  <script src="weather.js"></script>
+</head>
+<body>
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-6 ml-auto mr-auto text-left">
+        <input type="text" id="location-name" class="form-control" placeholder="Where to?">
+        <button id="get-the-weather" class="btn btn-primary mt-1">Get the weather!</button>
+      </div>
+    </div>
+    <div class="row current" style="display:none">
+      <div class="col">
+        <h1 id="current-conditions-icon">
+          const icon = function(iconName) {
+            switch(iconName) {
+              case "clear-day":
+              case "clear-night":
+                return "<i class='fas fa-sun'></i>";
+                break;
+              case "rain":
+                return "<i class='fas fa-tint'></i>";
+                break;
+              case "wind":
+                return "<i class='fas fa-bars'></i>";
+                break;
+              case "snow":
+              case "sleet":
+                return "<i class='fas fa-snowflake'></i>";
+                break;
+              default:
+                return "<i class='fas fa-cloud'></i>";
+                break;
+            }
+          }
+        </h1>
+        <h1 id="location">
+          const icon = function(iconName) {
+            switch(iconName) {
+              case "clear-day":
+              case "clear-night":
+                return "<i class='fas fa-sun'></i>";
+                break;
+              case "rain":
+                return "<i class='fas fa-tint'></i>";
+                break;
+              case "wind":
+                return "<i class='fas fa-bars'></i>";
+                break;
+              case "snow":
+              case "sleet":
+                return "<i class='fas fa-snowflake'></i>";
+                break;
+              default:
+                return "<i class='fas fa-cloud'></i>";
+                break;
+            }
+          }
+        <h2 id="current-conditions-text">
+          $(function() {
+            $("#get-the-weather").on("click", function(event) {
+              event.preventDefault();
+              let locationName = $("#location-name").val();
+              geocodeAndGetWeather(locationName);
+            });        </h2>
+      </div>
+    </div>
+    <div class="row forecast" style="display:none">
+      $(function() {
+        $("#get-the-weather").on("click", function(event) {
+          event.preventDefault();
+          let locationName = $("#location-name").val();
+          geocodeAndGetWeather(locationName);
+        });    </div>
   </div>
-</nav>
- <body>
- <!-- Your stuff goes here -->
-        <img src="engagement2.jpg" class="img-fluid" alt="engagement2.jpg">
-     <h1 href="#">Happily Every After...
-     </h1>
-     <p>This is a working site to chronicle our honeymoon plans! We are still planning the trip of a lifetime but we will use this as our itinerary to share with friends and family. Our top 3 priorities are listed below.</p>
-      <background-color:#ff0000;>
-       <ul>
-       <li>Beach</li>
-       <li>Service</li>
-       <li>Villa</li>
-      </ul>
- </body>
+</body>
 </html>
