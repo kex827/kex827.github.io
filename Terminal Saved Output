@@ -1,0 +1,51 @@
+Last login: Mon Feb  5 17:43:12 on ttys000
+Kyles-MacBook:~ Kyle_Esecson$ ls
+Applications			Movies
+Applications (Parallels)	Music
+Desktop				Parallels
+Documents			Pictures
+Downloads			Public
+Library				code
+MacKeeper Backups
+Kyles-MacBook:~ Kyle_Esecson$ ~ code/hw1
+-bash: /Users/Kyle_Esecson: is a directory
+Kyles-MacBook:~ Kyle_Esecson$ ls
+Applications			Movies
+Applications (Parallels)	Music
+Desktop				Parallels
+Documents			Pictures
+Downloads			Public
+Library				code
+MacKeeper Backups
+Kyles-MacBook:~ Kyle_Esecson$ cd ~/code/hw1
+Kyles-MacBook:hw1 Kyle_Esecson$ ls
+README.md	hw1.js
+Kyles-MacBook:hw1 Kyle_Esecson$ node
+> let weatherData = {
+... current: {
+..... temperature: 67,
+..... conditions: "Sunny"
+..... },
+... forecast: [
+... { temperature: 65, conditions: "Mostly Cloudy" },
+... { temperature: 70, conditions: "Partly Cloudy" }
+... ]
+... }
+undefined
+> weatherData
+{ current: { temperature: 67, conditions: 'Sunny' },
+  forecast: 
+   [ { temperature: 65, conditions: 'Mostly Cloudy' },
+     { temperature: 70, conditions: 'Partly Cloudy' } ] }
+> console.log
+[Function: bound consoleCall]
+> console.log("Do your homework!");
+Do your homework!
+undefined
+> weatherData
+{ current: { temperature: 67, conditions: 'Sunny' },
+  forecast: 
+   [ { temperature: 65, conditions: 'Mostly Cloudy' },
+     { temperature: 70, conditions: 'Partly Cloudy' } ] }
+> 
+> 

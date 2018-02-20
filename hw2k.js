@@ -10,30 +10,21 @@
 // KelloggCoin, that will massively disrupt financial markets at the Global
 // Hub.
 
+
 let blockchain = [
-  { fromUser: null, toUser: "brian", amount: 21000 },
-  { fromUser: "brian", toUser: "ben", amount: 9000 },
+  { fromUser: null, toUser: "brian", amount: 51000 },
+  { fromUser: "brian", toUser: "kyle", amount: 39000 },
   { fromUser: "brian", toUser: "jeff", amount: 7000 },
-  { fromUser: "ben", toUser: "jeff", amount: 400 },
+  { fromUser: "Kyle", toUser: "jeff", amount: 400 },
   { fromUser: "brian", toUser: "jeff", amount: 1500 },
   { fromUser: "jeff", toUser: "brian", amount: 4500 },
-  { fromUser: "jeff", toUser: "ben", amount: 1750 }
+  { fromUser: "jeff", toUser: "Kyle", amount: 1750 }
 ]
 
-
-let getBalance = function(username) {
-  let runningTotal = 0;
-  for (let i=0; i<blockchain.length; i++){
-    let transaction = blockchain[i];
-    if (transaction.fromUser === username){
-        runningTotal = runningTotal - transaction.amount
-    }
-    if (transaction.toUser === username) {
-        runningTotal = runningTotal + transaction.amount
-    }
-  }
-  return runningTotal;
-}
+  console.log("Brian's KelloggCoin balance is " + getBalance("brian"));
+  console.log("Kyle's KelloggCoin balance is " + getBalance("Kyle"));
+  console.log("Jeff's KelloggCoin balance is " + getBalance("jeff"));
+  
 
 // Write a function that, when given a username (i.e. brian, ben, or jeff),
 // returns the number of KelloggCoin that user has in their KelloggCoin "wallet".
@@ -48,7 +39,3 @@ let getBalance = function(username) {
 // Brian's KelloggCoin balance is 8000
 // Ben's KelloggCoin balance is 10350
 // Jeff's KelloggCoin balance is 2650
-
-console.log("Brian's KelloggCoin balance is " + getBalance("brian"));
-console.log("Ben's KelloggCoin balance is " + getBalance("ben"));
-console.log("Jeff's KelloggCoin balance is " + getBalance("jeff"));
